@@ -2,11 +2,15 @@ package com.hencoder.hencoderpracticedraw1.practice;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.hencoder.hencoderpracticedraw1.util.ViewUtil;
+
 public class Practice4DrawPointView extends View {
+    private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     public Practice4DrawPointView(Context context) {
         super(context);
@@ -14,6 +18,7 @@ public class Practice4DrawPointView extends View {
 
     public Practice4DrawPointView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        paint.setStrokeWidth(ViewUtil.dp2px(30));
     }
 
     public Practice4DrawPointView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -23,6 +28,12 @@ public class Practice4DrawPointView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        paint.setStrokeCap(Paint.Cap.ROUND);
+        canvas.drawPoint(ViewUtil.dp2px(120), ViewUtil.dp2px(120), paint);
+
+        paint.setStrokeCap(Paint.Cap.SQUARE);
+        canvas.drawPoint(ViewUtil.dp2px(240), ViewUtil.dp2px(120), paint);
 
 //        练习内容：使用 canvas.drawPoint() 方法画点
 //        一个圆点，一个方点
